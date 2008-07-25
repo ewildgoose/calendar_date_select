@@ -82,7 +82,7 @@ class CalendarDateSelect
   module FormHelper
     def calendar_date_select_tag( name, value = nil, options = {})
       calendar_options = calendar_date_select_process_options(options)
-      value = format_time(value, calendar_options)
+      value = format_cds_time(value, calendar_options)
       
       calendar_options.delete(:format)
       
@@ -94,7 +94,7 @@ class CalendarDateSelect
       calendar_date_select_output(tag, calendar_options)
     end
     
-    def format_time(value, options = {})
+    def format_cds_time(value, options = {})
       if value.respond_to?("strftime")
         if options[:format]
           value = value.strftime(options[:format])
